@@ -19,6 +19,7 @@ Create a structure with and for the data important when looking to increase long
 - Personal information which may effect different factors
     - Gender
     - Weight
+    - Age
     - Conditions
         - IBS
 
