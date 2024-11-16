@@ -8,7 +8,7 @@ export interface DataEvent<T> {
     data: T;
 }
 
-export type MainPage = "personal"|"nutrition"|"excersize"|"habits";
+export type MainPage = "personal"|"nutrition"|"excersize"|"habits"|"indicators";
 
 export type Gender = "male" | "female" | undefined;
 

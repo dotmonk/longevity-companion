@@ -5,6 +5,7 @@ import Nutrition from './Nutrition';
 import Excersize from './Excersize';
 import Habits from './Habits';
 import {Navbar, Nav, Container} from "react-bootstrap";
+import Indicators from './Indicators';
 
 export interface MainProps {
     appState: AppState
@@ -25,6 +26,10 @@ const pageMap: PageMap = {
     nutrition: {
         title: 'Nutrition',
         component: (props) => <Nutrition appState={props.appState} />
+    },
+    indicators: {
+        title: 'Indicators',
+        component: (props) => <Indicators appState={props.appState} />
     },
     excersize: {
         title: 'Excersize',
