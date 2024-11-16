@@ -1,5 +1,6 @@
 # longevity-companion
 Webapp to help with longevity
+https://dotmonk.github.io/longevity-companion/
 
 ## Disclaimer
 THIS IS A TOY FOR HOBBIESTS AND SHOULD NOT BE TAKEN SERIOUSLY!
