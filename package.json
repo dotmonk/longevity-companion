@@ -1,7 +1,7 @@
 {
     "scripts": {
         "dev": "vite src",
-        "release": "rm -rf docs && vite build src --outDir ../docs"
+        "release": "rm -rf docs && vite build src --outDir ../docs --base \"\""
     },
     "dependencies": {
         "bootswatch": "^5.3.3",
