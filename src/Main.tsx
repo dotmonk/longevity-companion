@@ -4,6 +4,7 @@ import Personal from './Personal';
 import Nutrition from './Nutrition';
 import Excersize from './Excersize';
 import Habits from './Habits';
+import {Navbar, Nav, Container} from "react-bootstrap";
 
 export interface MainProps {
     appState: AppState
@@ -40,17 +41,24 @@ export default (props: MainProps) => {
     const { page } = appState;
     const Page = pageMap[page].component;
     return (
-        <div>
-            <div>
-                {Object.keys(pageMap).map(page => (
-                    <a key={page} onClick={() => appState.update({
-                        page
-                    })}>
-                        {pageMap[page].title}
-                    </a>
-                ))}
-            </div>
+        <Container fluid>
+            <Navbar expand="lg" className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+                <Container fluid>
+                    <Navbar.Toggle aria-controls="navbar-main-app-state" />
+                    <Navbar.Collapse id="navbar-main-app-state">
+                    <Nav className="me-auto">
+                        {Object.keys(pageMap).map(page => (
+                            <Nav.Link key={page} onClick={() => appState.update({
+                                page
+                            })}>
+                                {pageMap[page].title}
+                            </Nav.Link>
+                        ))}
+                    </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
             <Page appState={appState} />
-        </div>
+        </Container>
     );
 }
