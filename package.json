@@ -1,7 +1,10 @@
 {
-    "scripts": {"dev": "vite src"},
+    "scripts": {
+        "dev": "vite src"
+    },
     "dependencies": {
         "react": "^18.3.1",
+        "react-bootstrap": "^2.10.5",
         "react-dom": "^18.3.1"
     },
     "devDependencies": {

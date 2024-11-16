@@ -3,20 +3,56 @@ import Main from './Main';
 
 export interface AppProps { }
 
+export interface DataEvent<T> {
+    timestamp: number;
+    data: T;
+}
+
+export type MainPage = "personal"|"nutrition"|"excersize"|"habits";
+
+export type Gender = "male" | "female" | undefined;
+
 export interface AppState {
-    placeholder1: string;
-    placeholder2: string;
+    weightKilograms: DataEvent<number>[];
+    dateOfBirthTimestamp: number;
+    gender: Gender;
+    page: MainPage;
     update: Function;
 }
 
 class App extends Component<AppProps, AppState> {
     constructor(props: AppProps) {
         super(props);
-        this.state = {
-            placeholder1: "FIXME1",
-            placeholder2: "FIXME2",
-            update: (state, callback) => this.setState(state, callback)
+        const savedState = localStorage.getItem("state");
+        let currentState: AppState = {
+            update: (state, callback) => { },
+            weightKilograms: [],
+            dateOfBirthTimestamp: -1,
+            gender: undefined,
+            page: 'personal'
+        };
+        if (savedState) {
+            try{
+                currentState = JSON.parse(savedState);
+            } catch(e) {}
         }
+        currentState.update = (state, callback) => {
+            this.setState(state, () => {
+                const updatelessCopy = Object.keys(this.state).reduce((copy, key) => {
+                    if(key === "update") {
+                        return copy;
+                    }
+                    copy[key]=structuredClone(this.state[key]);
+                    return copy;
+                }, {});
+                localStorage.setItem("state", JSON.stringify(updatelessCopy));
+                if (callback) {
+                    callback();
+                }
+            });
+        }
+        // @ts-ignore
+        this.state = currentState;
     }
     render() {
         return (
